@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"-->
+  </head>
+​
+  <body>
+    <!-- Top Jumbotron Section -->
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="jumbotron text-center">
+          <h1 style="font-size: 80px;">
+            <strong>Mission To Mars !!!</strong>
+          </h1>
+​
+          </br>
+​
+          <!--<p>Title. Paragraph. Featured Image. Weather. Facts. Hemisphere Images.</p>-->
+          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Latest Mars Data</a></p>
+        </div>
+      </div>
+​
+    <!-- Title and Paragraph -->
+    <!-- <div class="container"> -->
+      <div class="col-sm-12">
+        <h2>
+          <strong style="font-size: 30px; text-decoration: underline;">Latest Mars News</strong>
+        </h2>
+        <h3 style="font-size: 20px;">
+          <strong>{{ mars_data.news_title }}</strong>
+        </h3>
+        <p> - {{ mars_data.news_paragraph }}</p>
+      </div>  
+    <!-- </div> -->  
+​
+      <hr>
+​
+      <!-- Featured Image, Weather Card, and Fact Table -->
+      <div class="container">
+        <div class="box">  
+          <div class="row">
+            <!-- Left Side -->
+            <div class="col-lg-8 col-md-8 col-sm-12">
+              <h4>
+                <strong style="font-size: 30px;">Featured Mars Image:</strong>
+              </h4>
+              <img src="{{ mars_data.featured_image_url }}" style="max-width:100%;" alt="featured_image">
+            </div>
+​
+            <!-- Right Side -->
+            <!-- Card Reference "https://getbootstrap.com/docs/4.0/components/card/" -->
+            <div class="col-lg-4 col-md-4 col-sm-12">
+​
+              </br>
+​
+              <hr>
+​
+              <div class="card mx-auto" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title" style="text-decoration: underline;">Current Weather On Mars</h5>
+                  <p class="card-text">{{ mars_data.mars_weather }}</p>
+                </div>
+              </div>
+          
+              <hr>
+​
+              <!-- Reference "| safe" - "https://stackoverflow.com/questions/48975383/why-to-use-safe-in-jinja2-python" -->
+              <div style="font-size: small;">
+                <center>
+                  {{ mars_data.mars_facts | safe }}
+                </center>
+              </div>
+​
+              <hr>
+​
+            </div>
+          </div>
+        </div>
+      </div>
+​
+      </br>
+​
+      <!-- Mars Hemispheres -->
+      <!-- Card Reference "https://getbootstrap.com/docs/4.0/components/card/" -->
+      <!-- https://stackoverflow.com/questions/8018973/how-to-iterate-through-dictionary-in-a-dictionary-in-django-template -->
+      <!-- https://www.mattcrampton.com/blog/iterating_over_a_dict_in_a_jinja_template/ -->
+      <div class="container">
+        <div class="box">
+          <h6 style="font-size: 30px; text-align: center;">
+            <strong>Mars Hemispheres</strong>
+          </h6>
+​
+          <hr>
+​
+          <div class="row">
+​
+            {% for image in mars_data.hemisphere_urls %}
+​
+            <div class="col-md-6 col-sm-6">
+              <div class="card-deck">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="{{ image.Image }}" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text">{{ image.Title }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+​
+            {% endfor %}
+​
+          </div>
+        </div>  
+      </div>
+    </div>
+​
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  </body>
+​
+</html>

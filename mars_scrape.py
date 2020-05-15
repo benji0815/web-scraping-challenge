@@ -138,6 +138,3 @@ def scrape():
     print('Finished Scraping')
     browser.quit()
     return mars_data
-print(mars_data)
-
-scrape()
